@@ -1,0 +1,4 @@
+/.idea
+/vendor
+pdns.iml
+composer.lock
