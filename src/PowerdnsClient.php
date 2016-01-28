@@ -13,7 +13,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 
-class Client {
+class PowerdnsClient {
 
     /**
      * @var \GuzzleHttp\Client Instance of the Guzzle Http client

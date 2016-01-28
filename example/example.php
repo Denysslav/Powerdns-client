@@ -8,10 +8,10 @@
 
 require_once '../vendor/autoload.php';
 
-use PowerdnsClient\Client;
+use PowerdnsClient\PowerdnsClient;
 
 $headers = ['X-API-Key' => 'your-api-key', 'Accept' => 'application/json', 'Content-Type' => 'application/json'];
-$client = new Client('http://your-server/', $headers);
+$client = new PowerdnsClient('http://your-server/', $headers);
 
 $data = [
     'name' => "test2.org",
