@@ -18,16 +18,49 @@ class PowerdnsClient {
     /**
      * @var \GuzzleHttp\Client Instance of the Guzzle Http client
      */
-    protected $guzzleClient;
+    private $guzzleClient;
 
     /**
      * @var string $uri Uri segment added to base_uri in requests
      */
     private $uri;
 
-    public function __construct($baseUri, $headers, $options = null)
+    /**
+     * @var string $baseUri Base url for HTTP requests
+     */
+    private $baseUri;
+
+    /**
+     * @var string[] $headers HTTP headers (Accept, Content-Type and X-API-Key are required)
+     */
+    private $headers;
+
+    /**
+     * Set base uri for HTTP requests
+     *
+     * @param string $baseUri
+     */
+    public function setBaseUri($baseUri)
     {
-        $this->guzzleClient = new GuzzleClient(['base_uri' => $baseUri, 'headers' => $headers]);
+        $this->baseUri = $baseUri;
+    }
+
+    /**
+     * Set HTTP headers
+     *
+     * @param string[] $headers
+     */
+    public function setHeaders($headers)
+    {
+        $this->headers = $headers;
+    }
+
+    /**
+     * Initialize Guzzle client
+     */
+    public function init()
+    {
+        $this->guzzleClient = new GuzzleClient(['base_uri' => $this->baseUri, 'headers' => $this->headers]);
         $this->uri = 'servers/localhost/';
     }
 
@@ -90,7 +123,7 @@ class PowerdnsClient {
     {
         $current = $this->getZone($id);
         $merged  = array_merge($current, $data);
-        $this->uri .= 'zones/' . $id;
+
         try {
             $response = $this->guzzleClient->request('PUT', $this->uri, ['body' => json_encode($merged)]);
         } catch(ClientException $e){
