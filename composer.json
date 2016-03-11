@@ -1,9 +1,9 @@
 {
-    "name": "Denysslav/Powerdns-client",
+    "name": "denysslav/powerdns-client",
     "description": "A PHP client for PowerDNS http api",  
     "keywords": ["powerdns", "pdns", "pdns-server", "powerdns-server", "api", "dns"],
     "type": "library",
-    "homepage": "https://github.com/Denysslav/PowerDNS-client",  
+    "homepage": "https://github.com/denysslav/powerdns-client",  
     "authors": [
         {
             "name": "Denyslav Parvanov",
